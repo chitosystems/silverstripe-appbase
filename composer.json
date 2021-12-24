@@ -1,0 +1,28 @@
+{
+  "name": "chitosystems/silverstripe-appbase",
+  "description": "Base app tools for a web application",
+  "type": "silverstripe-vendormodule",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "silverstripe"
+  ],
+  "authors": [
+    {
+      "name": "Chito Systems"
+    }
+  ],
+  "require": {
+    "silverstripe/framework": "4.x-dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "ChitoSystems\\Silverstripe\\AppBase\\": "src/"
+    },
+    "classmap": [
+      "src"
+    ]
+  },
+  "extra": {
+    "installer-name": "app-base"
+  }
+}
