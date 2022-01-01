@@ -2,8 +2,11 @@
 
 namespace ChitoSystems\Silverstripe\AppBase\Core;
 
-use ChitoSystems\Traits\Manager;
+use ChitoSystems\Silverstripe\AppBase\Traits\Manager;
+use SilverStripe\Core\Config\Configurable;
 use SilverStripe\Core\Convert;
+use SilverStripe\Core\Extensible;
+use SilverStripe\Core\Injector\Injectable;
 use SilverStripe\Core\Manifest\ModuleResourceLoader;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
 use SilverStripe\Forms\GridField\GridFieldConfig;
@@ -18,25 +21,51 @@ use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 class SiteManager
 {
 
-    use Manager;
+    use Configurable;
+    use Injectable;
+    use Extensible;
 
-    public static function ResourcePath($module)
+    /**
+     * @param $class
+     *
+     * @return array
+     */
+    public static function getObjectMap($class): array
+    {
+        $oObjs = $class::get();
+
+        return $oObjs ? $oObjs->map()->toArray() : [];
+    }
+
+
+    /**
+     * @param $module
+     *
+     * @return string|null
+     */
+    public static function ResourcePath($module): ?string
     {
         return ModuleResourceLoader::singleton()->resolvePath($module);
     }
 
-    public static function ResourceURL($module)
+    /**
+     * @param $module
+     *
+     * @return string|null
+     */
+    public static function ResourceURL($module): ?string
     {
         return ModuleResourceLoader::singleton()->resolveURL($module);
     }
 
 
     /**
-     * @param string $sortField
+     * @param string|null $sortField
      *
      * @return GridFieldConfig
+     *
      */
-    public static function getGridFieldConfig($sortField = 'Sort')
+    public static function getGridFieldConfig(string $sortField = null): GridFieldConfig
     {
         $oConfig = GridFieldConfig::create();
         $oConfig->addComponent(new GridFieldToolbarHeader());
@@ -52,7 +81,6 @@ class SiteManager
 
         return $oConfig;
     }
-
 
     public static function addProtocol($url)
     {
@@ -97,7 +125,7 @@ class SiteManager
     }
 
 
-    public static function CleanTinyContent($string)
+    public static function cleanTinyContent($string)
     {
         // remove unwanted style propeties
         $except = [ 'color', 'font-weight', 'font-size', 'height', 'width' ]; // declare your exceptions

@@ -1,6 +1,6 @@
 {
   "name": "chitosystems/silverstripe-appbase",
-  "description": "Base app tools for a web application",
+  "description": "Base app tools for a SilvevrStripe web application",
   "type": "silverstripe-vendormodule",
   "license": "BSD-3-Clause",
   "keywords": [

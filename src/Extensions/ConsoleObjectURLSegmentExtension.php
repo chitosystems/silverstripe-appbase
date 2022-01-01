@@ -2,7 +2,6 @@
 
 namespace ChitoSystems\Silverstripe\AppBase\Extensions;
 
-use Listings\Store\Core\StoreManager;
 use SilverStripe\CMS\Forms\SiteTreeURLSegmentField;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;

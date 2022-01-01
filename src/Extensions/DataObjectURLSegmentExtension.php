@@ -2,7 +2,6 @@
 
 namespace ChitoSystems\Silverstripe\AppBase\Extensions;
 
-use Listings\Store\Core\StoreManager;
 use SilverStripe\CMS\Forms\SiteTreeURLSegmentField;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Controller;
@@ -99,10 +98,7 @@ class DataObjectURLSegmentExtension extends DataExtension
 
     public function validURLSegment($URLSegment)
     {
-        $oStore = StoreManager::getCurrentStore();
-//Debug::show($oStore);
-        //          Debug::show($this->owner);
-        //        Debug::show($URLSegment);
+
         $existingPage = DataList::create($this->owner->ClassName)->filter([
             'URLSegment' => $URLSegment,
         ])->exclude([

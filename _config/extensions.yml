@@ -1,20 +1,20 @@
 Page:
   extensions:
-    - ChitoSystems\Essentials\Extensions\PageExtension
+    - ChitoSystems\Silverstripe\AppBase\Extensions\PageExtension
 
 PageController:
   extensions:
-    - ChitoSystems\Essentials\Extensions\PageControllerExtension
+    - ChitoSystems\Silverstripe\AppBase\Extensions\PageControllerExtension
 
 SilverStripe\Forms\Tab:
   extensions:
-    - ChitoSystems\Essentials\Extensions\TabExtension
+    - ChitoSystems\Silverstripe\AppBase\Extensions\TabExtension
 
 SilverStripe\Forms\FormField:
   extensions:
-    - ChitoSystems\Essentials\Forms\Extensions\FormFieldExtension
+    - ChitoSystems\Silverstripe\AppBase\Extensions\FormFieldExtension
 
 
 SilverStripe\ORM\DataObject:
   extensions:
-    - ChitoSystems\Essentials\Extensions\DataObjectExtension
+    - ChitoSystems\Silverstripe\AppBase\Extensions\DataObjectExtension

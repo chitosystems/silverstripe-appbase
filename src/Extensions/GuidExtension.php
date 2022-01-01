@@ -2,7 +2,7 @@
 
 namespace ChitoSystems\Silverstripe\AppBase\Extensions;
 
-use ChitoSystems\Traits\CoreFunctions;
+use ChitoSystems\Silverstripe\AppBase\Traits\CoreFunctions;
 use SilverStripe\Dev\Debug;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\FieldList;
