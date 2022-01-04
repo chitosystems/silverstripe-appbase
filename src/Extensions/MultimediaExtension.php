@@ -4,6 +4,7 @@ namespace ChitoSystems\Silverstripe\AppBase\Extensions;
 
 use ChitoSystems\Base\Models\Multimedia;
 use Colymba\BulkUpload\BulkUploader;
+use SilverStripe\Assets\Image;
 use SilverStripe\Dev\Debug;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\GridField\GridField;
@@ -90,7 +91,7 @@ class MultimediaExtension extends DataExtension
                 $multimedia->write();
                 $aMultimedia = [
                     'ID'                              => $multimedia->ID,
-                    $this->owner->RawClassName . 'ID' => $this->owner->ID,
+                    $this->getRawClassName() . 'ID' => $this->owner->ID,
                 ];
                 if ( $multimedia->getImageLink() ) {
                     $aMultimedia[ 'ImageFilename' ] = $multimedia->getImageLink();
