@@ -13,7 +13,7 @@ use SilverStripe\ORM\DataList;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
-class MultimediaExtension extends DataExtension
+class MultimediaAttachExtension extends DataExtension
 {
 
     private static $has_many = [
