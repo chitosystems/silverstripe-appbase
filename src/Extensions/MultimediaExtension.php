@@ -16,12 +16,14 @@ use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 class MultimediaExtension extends DataExtension
 {
 
-    private static $has_many = [
-        'Images' => Multimedia::class,
+    private static $many_many = [
+        'Images' => Image::class,
     ];
 
-    private static $casting = [
-        'RawClassName' => 'Varchar',
+    private static $many_many_extraFields = [
+        'Images' => [
+            'Sort' => 'Int'
+        ]
     ];
 
     /**
