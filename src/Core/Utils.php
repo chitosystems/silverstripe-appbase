@@ -83,4 +83,24 @@ class Utils
         return false;
     }
 
+    /**
+     * Converts decimal longitude / latitude to DMS
+     * ( Degrees / minutes / seconds )
+     *
+     * @param $coord
+     *
+     * @return string
+     */
+    public static function DECtoDMS( $coord )
+    {
+        $isnorth = $coord >= 0;
+        $coord   = abs( $coord );
+        $deg     = floor( $coord );
+        $coord   = ( $coord - $deg ) * 60;
+        $min     = floor( $coord );
+        $sec     = floor( ( $coord - $min ) * 60 );
+
+        return sprintf( "%d&deg; %d' %d\" %s", $deg, $min, $sec, $isnorth ? 'N' : 'S' );
+    }
+
 }
