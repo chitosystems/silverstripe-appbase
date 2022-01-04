@@ -4,7 +4,6 @@ namespace ChitoSystems\Silverstripe\AppBase\Extensions;
 
 use ChitoSystems\Base\Models\Multimedia;
 use Colymba\BulkUpload\BulkUploader;
-use SilverStripe\Assets\Image;
 use SilverStripe\Dev\Debug;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\GridField\GridField;
@@ -17,14 +16,8 @@ use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 class MultimediaExtension extends DataExtension
 {
 
-    private static $many_many = [
-        'Images' => Image::class,
-    ];
-
-    private static $many_many_extraFields = [
-        'Images' => [
-            'Sort' => 'Int'
-        ]
+    private static $has_many = [
+        'Images' => Multimedia::class,
     ];
 
     /**
@@ -90,7 +83,7 @@ class MultimediaExtension extends DataExtension
             foreach ( $oImages as $multimedia ) {
                 $multimedia->write();
                 $aMultimedia = [
-                    'ID'                              => $multimedia->ID,
+                    'ID'                            => $multimedia->ID,
                     $this->getRawClassName() . 'ID' => $this->owner->ID,
                 ];
                 if ( $multimedia->getImageLink() ) {
