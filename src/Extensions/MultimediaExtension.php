@@ -2,7 +2,7 @@
 
 namespace ChitoSystems\Silverstripe\AppBase\Extensions;
 
-use ChitoSystems\Base\Models\Multimedia;
+use ChitoSystems\Silverstripe\AppBase\Models\Multimedia;
 use Colymba\BulkUpload\BulkUploader;
 use SilverStripe\Dev\Debug;
 use SilverStripe\Forms\FieldList;
