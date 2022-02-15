@@ -76,5 +76,9 @@ trait PageFunctions
 
     }
 
+    public static function get_strict() {
+        return self::get()->filter('ClassName', get_class());
+    }
+
 
 }

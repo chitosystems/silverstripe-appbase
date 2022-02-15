@@ -1,4 +1,13 @@
 ---
+Name: app-base-config
+---
+SilverStripe\ORM\Connect\MySQLDatabase:
+  connection_charset: utf8mb4
+  connection_collation: utf8mb4_unicode_ci
+  charset: utf8mb4
+  collation: utf8mb4_unicode_ci
+
+---
 Name: mimeuploadvalidator
 Only:
   moduleexists: 'silverstripe/mimevalidator'

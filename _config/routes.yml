@@ -1,7 +1,0 @@
----
-Name: app-base-routes
----
-
-SilverStripe\Control\Director:
-  rules:
-    'app!//$Action/$ID/$OtherID': ChitoSystems\Controls\AppController

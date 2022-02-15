@@ -8,7 +8,10 @@
   ],
   "authors": [
     {
-      "name": "Chito Systems"
+      "name": "Itayi Patrick Chitovoro",
+      "email": "patrick@chitosystems.com",
+      "homepage": "https://www.chitosystems.com",
+      "role": "Developer"
     }
   ],
   "require": {

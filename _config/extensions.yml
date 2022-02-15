@@ -1,6 +1,6 @@
-Page:
-  extensions:
-    - ChitoSystems\Silverstripe\AppBase\Extensions\PageExtension
+---
+Name: app-base-extensions
+---
 
 PageController:
   extensions:
