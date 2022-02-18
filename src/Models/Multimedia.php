@@ -29,6 +29,7 @@ class Multimedia extends DataObject
 
     private static $has_one = [
         'Image' => Image::class,
+        'Owner' => DataObject::class,
     ];
 
     private static $owns = [
