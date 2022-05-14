@@ -18,34 +18,4 @@ trait ThemeFunctions
         return ModuleResourceLoader::resourceURL($projectDir);
     }
 
-    public function CurrentThemeImageDir()
-    {
-        return $this->CurrentThemeDir() . '/client/images';
-    }
-
-
-    public static function CurrentThemeDir()
-    {
-        $themePath = ThemeResourceLoader::inst()->getPath('takunda');
-
-        return ModuleResourceLoader::resourceURL($themePath);
-    }
-
-
-    public static function ActiveThemeDir()
-    {
-        $themePath = ThemeResourceLoader::inst()->getPath('takunda');
-
-        return ModuleResourceLoader::resourceURL($themePath);
-    }
-
-
-    public static function ConsoleCurrentThemeDir()
-    {
-        $themePath = ThemeResourceLoader::inst()->getPath('console');
-
-        return ModuleResourceLoader::resourceURL($themePath);
-    }
-
-
 }
