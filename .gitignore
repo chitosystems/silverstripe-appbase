@@ -1,0 +1,22 @@
+# Git ignore everything except for a few directories we specify.
+# Blacklist files/folders in same directory as the .gitignore file
+# Ignore everything
+
+/*
+
+# Whitelist some files
+!.gitignore
+!.gitattributes
+!.htaccess
+!composer.json
+!README.md
+
+# Ignore all files named .DS_Store or ending with .log
+**/.DS_Store
+**.log
+
+# Whitelist themes/ and app/ folders
+# last "/" is optional when folder, may match file though.
+# It is NOT optional when followed by a *
+!/_config
+!/src
