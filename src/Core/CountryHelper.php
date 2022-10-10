@@ -18,8 +18,14 @@ use SilverStripe\Forms\GridField\GridFieldFooter;
 use SilverStripe\Forms\GridField\GridFieldToolbarHeader;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
-class CountryHelper extends Utils
-{
+
+/**
+ *
+ * $fields->addFieldToTab('Root.Main',DropdownField::create('Nationality')->setSource(CountryHelper::singleton()->getNationalityList())->setEmptyString('--Select Nationality--'))
+
+ *
+ */
+class CountryHelper extends Utils {
 
     private static $country_list = [
         'AF' => 'Afghanistan',
@@ -271,25 +277,221 @@ class CountryHelper extends Utils
         'ZW' => 'Zimbabwe',
     ];
 
+    private static $nationalities = [
+        'Afghan',
+        'Albanian',
+        'Algerian',
+        'American',
+        'Andorran',
+        'Angolan',
+        'Antiguans',
+        'Argentinean',
+        'Armenian',
+        'Australian',
+        'Austrian',
+        'Azerbaijani',
+        'Bahamian',
+        'Bahraini',
+        'Bangladeshi',
+        'Barbadian',
+        'Barbudans',
+        'Batswana',
+        'Belarusian',
+        'Belgian',
+        'Belizean',
+        'Beninese',
+        'Bhutanese',
+        'Bolivian',
+        'Bosnian',
+        'Brazilian',
+        'British',
+        'Bruneian',
+        'Bulgarian',
+        'Burkinabe',
+        'Burmese',
+        'Burundian',
+        'Cambodian',
+        'Cameroonian',
+        'Canadian',
+        'Cape Verdean',
+        'Central African',
+        'Chadian',
+        'Chilean',
+        'Chinese',
+        'Colombian',
+        'Comoran',
+        'Congolese',
+        'Costa Rican',
+        'Croatian',
+        'Cuban',
+        'Cypriot',
+        'Czech',
+        'Danish',
+        'Djibouti',
+        'Dominican',
+        'Dutch',
+        'East Timorese',
+        'Ecuadorean',
+        'Egyptian',
+        'Emirian',
+        'Equatorial Guinean',
+        'Eritrean',
+        'Estonian',
+        'Ethiopian',
+        'Fijian',
+        'Filipino',
+        'Finnish',
+        'French',
+        'Gabonese',
+        'Gambian',
+        'Georgian',
+        'German',
+        'Ghanaian',
+        'Greek',
+        'Grenadian',
+        'Guatemalan',
+        'Guinea-Bissauan',
+        'Guinean',
+        'Guyanese',
+        'Haitian',
+        'Herzegovinian',
+        'Honduran',
+        'Hungarian',
+        'I-Kiribati',
+        'Icelander',
+        'Indian',
+        'Indonesian',
+        'Iranian',
+        'Iraqi',
+        'Irish',
+        'Israeli',
+        'Italian',
+        'Ivorian',
+        'Jamaican',
+        'Japanese',
+        'Jordanian',
+        'Kazakhstani',
+        'Kenyan',
+        'Kittian and Nevisian',
+        'Kuwaiti',
+        'Kyrgyz',
+        'Laotian',
+        'Latvian',
+        'Lebanese',
+        'Liberian',
+        'Libyan',
+        'Liechtensteiner',
+        'Lithuanian',
+        'Luxembourger',
+        'Macedonian',
+        'Malagasy',
+        'Malawian',
+        'Malaysian',
+        'Maldivan',
+        'Malian',
+        'Maltese',
+        'Marshallese',
+        'Mauritanian',
+        'Mauritian',
+        'Mexican',
+        'Micronesian',
+        'Moldovan',
+        'Monacan',
+        'Mongolian',
+        'Moroccan',
+        'Mosotho',
+        'Motswana',
+        'Mozambican',
+        'Namibian',
+        'Nauruan',
+        'Nepalese',
+        'New Zealander',
+        'Nicaraguan',
+        'Nigerian',
+        'Nigerien',
+        'North Korean',
+        'Northern Irish',
+        'Norwegian',
+        'Omani',
+        'Pakistani',
+        'Palauan',
+        'Panamanian',
+        'Papua New Guinean',
+        'Paraguayan',
+        'Peruvian',
+        'Polish',
+        'Portuguese',
+        'Qatari',
+        'Romanian',
+        'Russian',
+        'Rwandan',
+        'Saint Lucian',
+        'Salvadoran',
+        'Samoan',
+        'San Marinese',
+        'Sao Tomean',
+        'Saudi',
+        'Scottish',
+        'Senegalese',
+        'Serbian',
+        'Seychellois',
+        'Sierra Leonean',
+        'Singaporean',
+        'Slovakian',
+        'Slovenian',
+        'Solomon Islander',
+        'Somali',
+        'South African',
+        'South Korean',
+        'Spanish',
+        'Sri Lankan',
+        'Sudanese',
+        'Surinamer',
+        'Swazi',
+        'Swedish',
+        'Swiss',
+        'Syrian',
+        'Taiwanese',
+        'Tajik',
+        'Tanzanian',
+        'Thai',
+        'Togolese',
+        'Tongan',
+        'Trinidadian/Tobagonian',
+        'Tunisian',
+        'Turkish',
+        'Tuvaluan',
+        'Ugandan',
+        'Ukrainian',
+        'Uruguayan',
+        'Uzbekistani',
+        'Venezuelan',
+        'Vietnamese',
+        'Welsh',
+        'Yemenite',
+        'Zambian',
+        'Zimbabwean',
+    ];
+
     /**
      * @return string[]
      */
-    public static function CountyList(): array
+    public static function CountyList ()
+    : array
     {
         return static::$country_list;
     }
 
-    public static function getCountyCodeFromName($name)
+    public static function getCountyCodeFromName ( $name )
     {
-
-        $aCountryList = array_flip(static::$country_list);
+        $aCountryList = array_flip( static::$country_list );
 
         return $aCountryList[ $name ];
     }
 
-    public static function getCountyNameFromCode($code)
+    public static function getCountyNameFromCode ( $code )
     {
-        $code = strtoupper($code);
+        $code = strtoupper( $code );
 
         $aCountryList = static::$country_list;
 
@@ -302,35 +504,48 @@ class CountryHelper extends Utils
      *
      * @return array|mixed
      */
-    public static function codeToCountry($code)
+    public static function codeToCountry ( $code )
     {
-
-        return static::getCountyNameFromCode($code);
+        return static::getCountyNameFromCode( $code );
     }
 
 
     /**
      * @return array|false
      */
-    public static function getCountryNameList()
+    public static function getCountryNameList ()
     {
         $aCountryList = static::$country_list;
 
-        return array_combine(array_values($aCountryList), array_values($aCountryList));
-
+        return array_combine( array_values( $aCountryList ), array_values( $aCountryList ) );
     }
 
     /**
      * @return string[]
      */
-    public function getCountryList(): array
+    public function getCountryList ()
+    : array
     {
         $aCountryList = static::$country_list;
 
-        $this->extend('updateCountryList', $aCountryList);
+        $this->extend( 'updateCountryList', $aCountryList );
 
         return $aCountryList;
+    }
 
+    /**
+     *
+     * @return array
+     */
+    public function getNationalityList ()
+    : array
+    {
+        $aNationalities = static::$nationalities;
+
+        $aList = array_combine( array_values( $aNationalities ), array_values( $aNationalities ) );
+        $this->extend( 'updateNationalityList', $aList );
+
+        return $aList;
     }
 
 }
