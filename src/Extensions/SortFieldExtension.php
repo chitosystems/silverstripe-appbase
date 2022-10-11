@@ -27,6 +27,7 @@ class SortFieldExtension extends DataExtension
 
     }
 
+    /*
     public function onBeforeWrite()
     {
         if ( null === $this->owner->Sort ) {
@@ -43,4 +44,5 @@ class SortFieldExtension extends DataExtension
 
         return Config::inst()->get($this->owner->ClassName, 'table_name', Config::UNINHERITED);
     }
+    */
 }
