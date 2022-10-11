@@ -32,9 +32,9 @@ class GuidExtension extends DataExtension
     public function updateCMSFields(FieldList $fields)
     {
 
-        //$fields->addFieldToTab('Root.Main', ReadonlyField::create('Guid'));
+        $fields->addFieldToTab('Root.Main', ReadonlyField::create('Guid'));
 
-        $fields->push(ReadonlyField::create('Guid'));
+        //$fields->push(ReadonlyField::create('Guid'));
     }
 
     public function onBeforeWrite()
