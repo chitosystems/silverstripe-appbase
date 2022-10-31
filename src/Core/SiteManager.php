@@ -16,6 +16,7 @@ use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use SilverStripe\Forms\GridField\GridFieldEditButton;
 use SilverStripe\Forms\GridField\GridFieldFooter;
+use SilverStripe\Forms\GridField\GridFieldPaginator;
 use SilverStripe\Forms\GridField\GridFieldToolbarHeader;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
@@ -100,6 +101,24 @@ class SiteManager {
         if ( !empty( $sortField ) ) {
             $oConfig->addComponent( new GridFieldOrderableRows( $sortField ) );
         }
+
+        return $oConfig;
+    }
+
+    /**
+     * @param  string  $sortField
+     * @param  int     $paginationLimit
+     *
+     * @return GridFieldConfig|GridFieldConfig_RecordEditor
+     */
+    public function getGridFieldViewerConfig ( string $sortField = '', int $paginationLimit = 5000 )
+    {
+        $oConfig = static::getGridFieldEditorConfig( $sortField );
+        $oConfig->removeComponentsByType( GridFieldPaginator::class );
+        $oConfig->addComponent( $pagination = GridFieldPaginator::create( $paginationLimit ) );
+        $pagination->setThrowExceptionOnBadDataType( false );
+        $oConfig->removeComponentsByType( GridFieldDeleteAction::class );
+        $oConfig->removeComponentsByType( GridFieldAddNewButton::class );
 
         return $oConfig;
     }
