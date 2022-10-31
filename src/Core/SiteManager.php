@@ -112,6 +112,7 @@ class SiteManager {
      * @return GridFieldConfig|GridFieldConfig_RecordEditor
      */
     public function getGridFieldViewerConfig ( string $sortField = '', int $paginationLimit = 5000 )
+    : GridFieldConfig | GridFieldConfig_RecordEditor
     {
         $oConfig = static::getGridFieldEditorConfig( $sortField );
         $oConfig->removeComponentsByType( GridFieldPaginator::class );
