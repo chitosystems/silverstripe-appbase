@@ -65,11 +65,11 @@ class SiteManager {
 
     /**
      * @param  string|null  $sortField
+     * @param  int          $paginationLimit
      *
      * @return GridFieldConfig
-     *
      */
-    public static function getGridFieldConfig ( string $sortField = null )
+    public static function getGridFieldConfig ( string $sortField = null, int $paginationLimit = 50 )
     : GridFieldConfig
     {
         $oConfig = GridFieldConfig::create();
@@ -79,6 +79,9 @@ class SiteManager {
         $oConfig->addComponent( new GridFieldDetailForm() );
         $oConfig->addComponent( new GridFieldEditButton() );
         $oConfig->addComponent( new GridFieldDeleteAction() );
+        $oConfig->removeComponentsByType( GridFieldPaginator::class );
+        $oConfig->addComponent( $pagination = GridFieldPaginator::create( $paginationLimit ) );
+        $pagination->setThrowExceptionOnBadDataType( false );
         if ( $sortField ) {
             $oConfig->addComponent( new GridFieldOrderableRows( $sortField ) );
         }
@@ -89,15 +92,15 @@ class SiteManager {
 
 
     /**
-     * @param  string|null  $sortField
+     * @param  string  $sortField
+     * @param  int     $paginationLimit
      *
-     * @return GridFieldConfig
-     *
+     * @return GridFieldConfig_RecordEditor
      */
-    public static function getGridFieldEditorConfig ( string $sortField = '' )
+    public static function getGridFieldEditorConfig ( string $sortField = '', int $paginationLimit = 50 )
     : GridFieldConfig_RecordEditor
     {
-        $oConfig = GridFieldConfig_RecordEditor::create();
+        $oConfig = GridFieldConfig_RecordEditor::create( $paginationLimit );
         if ( !empty( $sortField ) ) {
             $oConfig->addComponent( new GridFieldOrderableRows( $sortField ) );
         }
@@ -114,10 +117,7 @@ class SiteManager {
     public static function getGridFieldViewerConfig ( string $sortField = '', int $paginationLimit = 5000 )
     : GridFieldConfig | GridFieldConfig_RecordEditor
     {
-        $oConfig = static::getGridFieldEditorConfig( $sortField );
-        $oConfig->removeComponentsByType( GridFieldPaginator::class );
-        $oConfig->addComponent( $pagination = GridFieldPaginator::create( $paginationLimit ) );
-        $pagination->setThrowExceptionOnBadDataType( false );
+        $oConfig = static::getGridFieldEditorConfig( $sortField, $paginationLimit );
         $oConfig->removeComponentsByType( GridFieldDeleteAction::class );
         $oConfig->removeComponentsByType( GridFieldAddNewButton::class );
 

@@ -15,7 +15,8 @@
     }
   ],
   "require": {
-    "silverstripe/framework": "4.x-dev"
+    "silverstripe/framework": "4.x-dev",
+    "symbiote/silverstripe-gridfieldextensions": "@stable"
   },
   "autoload": {
     "psr-4": {
