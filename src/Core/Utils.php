@@ -18,8 +18,7 @@ use SilverStripe\Forms\GridField\GridFieldFooter;
 use SilverStripe\Forms\GridField\GridFieldToolbarHeader;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
-class Utils
-{
+class Utils {
 
     use Configurable;
     use Injectable;
@@ -27,12 +26,13 @@ class Utils
 
 
     /**
-     * @param int $x
-     * @param int $max
+     * @param  int  $x
+     * @param  int  $max
      *
      * @return array
      */
-    public static function getNumericValues(int $x = 0, int $max = 4): array
+    public static function getNumericValues ( int $x = 0, int $max = 4 )
+    : array
     {
         $aValues = [];
         for ( $i = $x; $i <= $max; $i++ ) {
@@ -43,17 +43,18 @@ class Utils
     }
 
     /**
-     * @param string $name
-     * @param string $title
+     * @param  string  $name
+     * @param  string  $title
      *
      * @return array
      */
-    public static function aMonths(string $name = 'n', string $title = 'F'): array
+    public static function aMonths ( string $name = 'n', string $title = 'F' )
+    : array
     {
         $months = [];
         for ( $m = 1; $m <= 12; $m++ ) {
-            $timestamp = mktime(0, 0, 0, $m, 1);
-            $months[ date($name, $timestamp) ] = date($title, $timestamp);
+            $timestamp = mktime( 0, 0, 0, $m, 1 );
+            $months[ date( $name, $timestamp ) ] = date( $title, $timestamp );
         }
 
         return $months;
@@ -65,18 +66,18 @@ class Utils
      *
      * @return bool
      */
-    public static function isValidUuid($uuid): bool
+    public static function isValidUuid ( $uuid )
+    : bool
     {
-
-        return !( !is_string($uuid) || ( preg_match('/^[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $uuid) !== 1 ) );
+        return !( !is_string( $uuid ) || ( preg_match( '/^[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $uuid ) !== 1 ) );
     }
 
 
-    public static function getDomain($url)
+    public static function getDomain ( $url )
     {
-        $pieces = parse_url($url);
+        $pieces = parse_url( $url );
         $domain = $pieces[ 'host' ] ?? '';
-        if ( preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs) ) {
+        if ( preg_match( '/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs ) ) {
             return $regs[ 'domain' ];
         }
 
@@ -91,16 +92,33 @@ class Utils
      *
      * @return string
      */
-    public static function DECtoDMS( $coord )
+    public static function DECtoDMS ( $coord )
     {
         $isnorth = $coord >= 0;
-        $coord   = abs( $coord );
-        $deg     = floor( $coord );
-        $coord   = ( $coord - $deg ) * 60;
-        $min     = floor( $coord );
-        $sec     = floor( ( $coord - $min ) * 60 );
+        $coord = abs( $coord );
+        $deg = floor( $coord );
+        $coord = ( $coord - $deg ) * 60;
+        $min = floor( $coord );
+        $sec = floor( ( $coord - $min ) * 60 );
 
         return sprintf( "%d&deg; %d' %d\" %s", $deg, $min, $sec, $isnorth ? 'N' : 'S' );
     }
+
+
+    /**
+     * @return array
+     */
+    public static function aSalutationList ()
+    {
+        $aList = [];
+        $aList[] = 'Mr';
+        $aList[] = 'Mrs';
+        $aList[] = 'Ms';
+        $aList[] = 'Miss';
+        $aList[] = 'Dr';
+
+        return array_combine( array_values( $aList ), array_values( $aList ) );
+    }
+
 
 }
