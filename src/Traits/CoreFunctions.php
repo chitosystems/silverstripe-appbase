@@ -2,8 +2,7 @@
 
 namespace ChitoSystems\Silverstripe\AppBase\Traits;
 
-use ChitoSystems\Geo\Model\Country;
-use ChitoSystems\Managers\SiteManager;
+use ChitoSystems\Silverstripe\AppBase\Core\SiteManager;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\ORM\FieldType\DBDatetime;
 use SilverStripe\Security\Member;
