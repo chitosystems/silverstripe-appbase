@@ -12,6 +12,7 @@ use SilverStripe\Forms\NumericField;
 use SilverStripe\Forms\PasswordField;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\TimeField;
 use SilverStripe\ORM\DataExtension;
 
 class FormFieldExtension extends DataExtension
@@ -22,6 +23,7 @@ class FormFieldExtension extends DataExtension
         $_a[] = TextField::class;
         $_a[] = CurrencyField::class;
         $_a[] = DateField::class;
+        $_a[] = TimeField::class;
         $_a[] = EmailField::class;
         $_a[] = PasswordField::class;
         $_a[] = TextareaField::class;
