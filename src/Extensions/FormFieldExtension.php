@@ -6,6 +6,7 @@ use SilverStripe\Dev\Debug;
 use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\CurrencyField;
 use SilverStripe\Forms\DateField;
+use SilverStripe\Forms\DatetimeField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\EmailField;
 use SilverStripe\Forms\NumericField;
@@ -22,6 +23,7 @@ class FormFieldExtension extends DataExtension
         $_a = [];
         $_a[] = TextField::class;
         $_a[] = CurrencyField::class;
+        $_a[] = DatetimeField::class;
         $_a[] = DateField::class;
         $_a[] = TimeField::class;
         $_a[] = EmailField::class;
