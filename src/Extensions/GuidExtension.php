@@ -65,6 +65,7 @@ class GuidExtension extends DataExtension
     {
         parent::requireDefaultRecords();
 
+        /*
         if ( $this->owner->hasExtension(__CLASS__) ) {
 
             $oList = DataList::create($this->owner->ClassName);//->where('Guid IS NULL');
@@ -74,7 +75,7 @@ class GuidExtension extends DataExtension
                 }
             }
         }
+        */
     }
 
 }
-
