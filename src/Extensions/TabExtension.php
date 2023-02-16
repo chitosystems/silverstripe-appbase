@@ -48,7 +48,9 @@ class TabExtension extends Extension
 
     public function getIsFullWidth()
     {
-        return $this->owner->IsFullWidth;
+        return Config::inst()->get($this->owner,'IsFullWidth');
+
+        //return $this->owner->IsFullWidth;
     }
 
 }
