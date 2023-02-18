@@ -2,6 +2,7 @@
 
 namespace ChitoSystems\Silverstripe\AppBase\Extensions;
 
+use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Extension;
 
 class TabExtension extends Extension
