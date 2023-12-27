@@ -51,7 +51,7 @@ class MultimediaAttachExtension extends DataExtension {
     public function RandomImage ()
     {
         if ( count( $this->owner->Images() ) ) {
-            $image = $this->owner->Images()->sort( 'Rand()' )->first();
+            $image = $this->owner->Images()->orderBy( 'Rand()' )->first();
 
             return $image->Image();
         }
@@ -62,7 +62,7 @@ class MultimediaAttachExtension extends DataExtension {
     public function getRandomMultimedia ()
     {
         if ( count( $this->owner->Images() ) ) {
-            return $this->owner->Images()->sort( 'Rand()' )->first();
+            return $this->owner->Images()->orderBy( 'Rand()' )->first();
         }
 
         return false;
