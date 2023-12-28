@@ -83,7 +83,7 @@ class MultimediaAttachExtension extends DataExtension {
         if ( count( $this->owner->Images() ) ) {
             $oImages = $this->owner->Images();
 
-            $oImages = $oImages->exclude( 'ID', $oImages->first()->ID )->sort( 'Rand()' )->limit( 10 );
+            $oImages = $oImages->exclude( 'ID', $oImages->first()->ID )->orderBy( 'Rand()' )->limit( 10 );
 
             foreach ( $oImages as $multimedia ) {
                 $multimedia->write();
